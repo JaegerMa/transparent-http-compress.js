@@ -26,7 +26,7 @@ http.createServer((request, response) =>
 });
 ```
 
-If you want to add new compression libraries or replace or disable existing ones, either set or extend the variable `httpCompress.libraries` to set the default for all future responses, or pass an object to `httpCompress.libraries` which then will then be merged into the default libraries in `httpCompress.libraries` for that response:
+If you want to add new compression libraries or replace or disable existing ones, either set or extend the variable `httpCompress.libraries` to set the default for all future responses, or pass an object to `httpCompress.compress` which then will then be merged into the default libraries in `httpCompress.libraries` for that response:
 ```js
 const http = require('http');
 const httpCompress = require('transparent-http-compress');
@@ -40,7 +40,9 @@ http.createServer((request, response) =>
 {
 	let compressedResponse = httpCompress.compress(request, response,
 		{
-			gzip: null, //As this object is merged into the default libraries, gzip will be disabled for this response
+			gzip: null, //As this object is merged
+						//into the default libraries,
+						//gzip will be disabled for this response
 		}
 	);
 
