@@ -51,6 +51,22 @@ http.createServer((request, response) =>
 	compressedResponse.end();
 });
 ```
+
+It's also possible, to pass the `Accept-Encoding` header manually instead of the whole request object. This also allows to pass a single compression method and if available, that one will be used:
+```js
+const http = require('http');
+const httpCompress = require('transparent-http-compress');
+
+http.createServer((request, response) =>
+{
+	let compressedResponse = httpCompress.compress('deflate, gzip', response);
+
+	compressedResponse.write('Hello HTTP');
+	compressedResponse.end();
+});
+```
+
+
 ## Supported compression methods
 ### Default compression methods
 Following compression methods can be used without any dependencies as they're done using the NodeJS core packages. These are enabled by default:

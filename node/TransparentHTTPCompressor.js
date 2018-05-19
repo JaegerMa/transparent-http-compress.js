@@ -32,8 +32,8 @@ class TransparentHTTPCompressor
 	{
 		let headers = request.headers || request;
 
-		let acceptedCompressionsStr = headers['accept-encoding'];
-		if(!acceptedCompressionsStr)
+		let acceptedCompressionsStr = headers['accept-encoding'] || headers;
+		if(!acceptedCompressionsStr || typeof(acceptedCompressionsStr) !== 'string')
 			return null;
 
 		let acceptedCompressions = acceptedCompressionsStr.split(',').map((method) => method.trim());
