@@ -1,6 +1,6 @@
 {
   "name": "transparent-http-compress",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Create a stream based on the `accept-encoding` HTTP header which transparently compresses the data written to it",
   "main": "module.js",
   "repository": "https://github.com/JaegerMa/transparent-http-compress.js",
