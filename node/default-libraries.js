@@ -6,14 +6,18 @@ let lib =
 {
 	deflate: () => zlib.createDeflate(),
 	gzip: () => zlib.createGzip(),
+	br: zlib.createBrotliCompress && (() => zlib.createBrotliCompress()),
 };
 
-try
+if(!lib.br)
 {
-	let brotli = require('iltorb');
-	lib.br = () => brotli.compressStream();
+	try
+	{
+		let brotli = require('iltorb');
+		lib.br = () => brotli.compressStream();
+	}
+	catch(x) { }
 }
-catch(x) { }
 
 
 module.exports = lib;
