@@ -72,10 +72,11 @@ http.createServer((request, response) =>
 Following compression methods can be used without any dependencies as they're done using the NodeJS core packages. These are enabled by default:
 - `deflate`: Using NodeJS `zlib`
 - `gzip`: Using NodeJS `zlib`
+- `br` (brotli): Using NodeJS 11+ `zlib`
 
 ### Compressions with dependencies
 Some compression methods are provided by other packages not included in NodeJS. `transparent-http-compress`  doesn't have this dependencies listed in package.json so users don't have to download huge dependency-trees if they don't use the features. If you want to use a compression listed here, just install the dependency and `transparent-http-compress` will automatically use it.
-- `brotli` (also known as `br`): Depends on npm package `iltorb`
+- `br` (brotli): When below NodeJS 11.7, depends on npm package `iltorb`
 
 
 ## API
