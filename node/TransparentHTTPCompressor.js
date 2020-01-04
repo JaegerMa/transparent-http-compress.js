@@ -11,7 +11,7 @@ class TransparentHTTPCompressor
 
 		let ourLibraries = Object.assign({}, TransparentHTTPCompressor.libraries, libraries);
 
-		let [libName, libCreator] = this.getBestCompression(request, ourLibraries) || [];
+		let [libName, libCreator] = TransparentHTTPCompressor.getBestCompression(request, ourLibraries) || [];
 		if(!libName || !libCreator)
 			return response;
 
